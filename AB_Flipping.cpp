@@ -1,46 +1,34 @@
-#include <iostream>
 #include <bits/stdc++.h>
+
 using namespace std;
+typedef long long ll;
+
 int main()
 {
-    int n;
-    cin >> n;
-    for (int i = 0; i < n; i++)
+    int t;
+    cin >> t;
+    while (t--)
     {
-        int m;
-        cin >> m;
+        int n, ca = 0, cb = 0, result = 0;
         string s;
-        cin >> s;
-        int c = 0;
-        int j = 0, k = 0;
-        set<int> a;
-        int x;
-        while (1)
+        cin >> n >> s;
+
+        for (int i = 0; i < n; i++)
         {
-            if (s[j] == 'A' && s[j + 1] == 'B')
+            if(s[i]=='A')
+            ++ca;
+            
+            if(ca != 0 && s[i] == 'B')
+            ++cb;
+            if(ca != 0 && cb != 0)
             {
-                x = a.count(j);
-                if (x == 1)
-                    c+=0;
-                else
-                {
-                    swap(s[j],s[j+1]);
-                    c++;
-                    k++;
-                    a.insert(j);
-                }
+                result += ca;
+                ca = 1;
+                cb = 0;
             }
-            if (j == (m - 2))
-            {
-                j = -1;
-                if (k == 0)
-                    break;
-                else
-                    k = 0;
-            }
-            j++;
-           //cout << s << endl;
+
         }
-        cout << c << "\n";
+        cout << result << '\n';
     }
+    return 0;
 }
