@@ -1,0 +1,1 @@
+{"name":"Local: cp","url":"/home/tanmoy/Desktop/Gitrepo/Codeforces-problem/cp.cpp","tests":[{"id":1712206332204,"input":"5\n1\n10\n200\n3000\n400000","output":"Ekok.\nDashak.\nShatak.\nCounterfeit.\nCounterfeit."}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/tanmoy/Desktop/Gitrepo/Codeforces-problem/cp.cpp","group":"local","local":true}

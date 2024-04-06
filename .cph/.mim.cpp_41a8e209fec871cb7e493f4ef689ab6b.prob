@@ -1,0 +1,1 @@
+{"name":"Local: mim","url":"/home/tanmoy/Desktop/Gitrepo/Codeforces-problem/mim.cpp","tests":[{"id":1712227550573,"input":"3\nX++\n++X\n--X","output":""},{"id":1712227769198,"input":"1\nX++","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/tanmoy/Desktop/Gitrepo/Codeforces-problem/mim.cpp","group":"local","local":true}
