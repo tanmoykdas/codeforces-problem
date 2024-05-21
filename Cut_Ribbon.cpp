@@ -3,35 +3,97 @@
 using namespace std;
 int main()
 {
-    // Dynamic program
-    // Bottom up approach
+    int n, a[3], sum = 0, c = 0, d = 0;
+    vector<int> v;
 
-    int n, a, b, c;
-    cin >> n >> a >> b >> c;
+    cin >> n >> a[0] >> a[1] >> a[2];
+    sort(a, a + 3);
 
-    // considering a table with 0 index
+    if ((a[0] + a[1] + a[2]) == n)
+        v.push_back(3);
+    if (n % a[0] == 0)
+        v.push_back(n / a[0]);
 
-    int dp[n + 1];
-    dp[0] = 0;
-    int x, y, z;
+    if (n % a[1] == 0)
+        v.push_back(n / a[1]);
 
-    for (int i = 1; i <= n; i++)
+    if (n % a[2] == 0)
+        v.push_back(n / a[2]);
+
+    int m = n;
+
+    while (n > 0)
     {
-        x = INT_MIN;
-        y = INT_MIN;
-        z = INT_MIN;
-        cout<< "x=" << x << " "
-            << "y=" << y << " "
-            << "z=" << z << "\n";
-        if (i >= a)
-            x = dp[i - a];
-        if (i >= b)
-            y = dp[i - b];
-        if (i >= c)
-            z = dp[i - c];
-
-        dp[i] = 1 + max(z, max(x, y));
-        cout << dp[i] << " " << x << " " << y << " " << z << "\n";
+        n -= a[1];
+        c++;
+        // cout << n << " " << c << endl;
+        if (n > 0 && n % a[0] == 0)
+        {
+            d = n / a[0];
+            break;
+        }
     }
-    cout << dp[n];
+    // cout << d << " " << c << endl;
+    if (d != 0)
+        v.push_back(c + d);
+
+    n = m;
+    c = 0;
+    d = 0;
+
+    while (n > 0)
+    {
+        n -= a[2];
+        c++;
+        if (n > 0 && n % a[0] == 0)
+        {
+            d = n / a[0];
+            break;
+        }
+    }
+    if (d != 0)
+        v.push_back(c + d);
+
+    n = m;
+    c = 0;
+    d = 0;
+
+    while (n > 0)
+    {
+        n -= a[2];
+        c++;
+        if (n > 0 && n % a[1] == 0)
+        {
+            d = n / a[1];
+            break;
+        }
+    }
+    if (d != 0)
+        v.push_back(c + d);
+
+    n = m;
+    c = 0;
+    d = 0;
+    while (n > 0)
+    {
+        if(n % a[0] == 0) {
+            n -= a[0];
+            c++;
+        }
+        else{
+            if(n % a[1] == 0) {
+                n -= a[1];
+                c++;
+            }
+            else {
+                n -= a[2];
+                c++;
+            }
+        }
+    }
+    v.push_back(c);
+    int ans;
+    ans = *max_element(v.begin(), v.end());
+
+    cout << ans;
 }
