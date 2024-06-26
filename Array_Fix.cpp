@@ -7,25 +7,42 @@ int main()
     cin >> n;
     for (int i = 0; i < n; i++)
     {
-        int m;
+        int m, c = 0, max = 0;
         cin >> m;
         int a[m];
         for (int j = 0; j < m; j++)
         {
             cin >> a[j];
         }
-        vector<int> v;
-        v.push_back(a[m - 1]);
-        for(int j = m - 2; j >= 0; j--)
+        for (int j = 1; j < m; j++)
         {
-            if(a[j] > v.back())
+            if (a[j] < a[j - 1])
             {
-                v.push_back(a[j]%10);
-                v.push_back(a[j]/10);
+                int e1, e2;
+                e1 = a[j - 1] / 10;
+                e2 = a[j - 1] % 10;
+                if (e2 < max)
+                {
+                    c++;
+                    break;
+                }
+                else
+                {
+                    max = e2;
+                }
+                if ((e1 < a[j] && e2 < a[j]) && e1 < e2)
+                    continue;
+                else
+                    c++;
             }
-            else
-            v.push_back(a[j]);
+            {
+                max = a[j - 1];
+            }
+            // cout << max << " ";
         }
-        cout << (is_sorted(v.rbegin(),v.rend()) ? "YES" : "NO") << '\n';
+        if (c == 0)
+            cout << "YES" << endl;
+        else
+            cout << "NO" << endl;
     }
 }
