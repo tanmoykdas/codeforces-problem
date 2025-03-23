@@ -1,0 +1,1 @@
+{"name":"Local: 975A","url":"d:\\Programing\\Codeforces-problem\\975A.cpp","tests":[{"id":1741204379529,"input":"5\na aa aaa ab abb\n\n","output":""},{"id":1741206387054,"input":"3\namer arem mrea\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Programing\\Codeforces-problem\\975A.cpp","group":"local","local":true}
