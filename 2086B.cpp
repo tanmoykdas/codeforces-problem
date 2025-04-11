@@ -1,81 +1,68 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-void solve()
-{
-    long long n, k, x;
-    cin >> n >> k >> x;
-    int a[n];
-    for (auto &x : a)
-        cin >> x;
-    long long sum = 0, target = 0, total;
-    total = n * k;
-    for (auto x : a)
-        sum += x;
-    if (sum < x)
-    {
-        if (sum * k >= x)
-        {
-            if (x % sum == 0)
-            {
-                target = x / sum;
-                cout << total - (target * n) << endl;
+using ll = long long;
+
+const int N = 1e5 + 10;
+
+ll n, k, x;
+ll a[N];
+ll sum = 0;
+
+int main() {
+    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+    int t;
+    cin >> t;
+    while (t--) {
+        cin >> n >> k >> x;
+
+        for (int i = 0; i < n; i++) cin >> a[i];
+        for (int i = 0; i < n; i++) sum += a[i];
+        
+        ll total_sum = sum * k;
+
+        if (x > total_sum) {
+            cout << 0 << endl;
+            continue;
+        }
+
+        if (sum > x) {
+            ll target = 0, pos;
+
+            for (int i = 0; i < n; i++) {
+                target += a[i];
+                if (target >= x) {
+                    pos = i;
+                    break;
+                }
             }
-            else
-            {
-                target = x / sum;
-                // cout << "target:" << target << endl;
-                long long get = target * sum;
-                // cout << "get:" << get << endl;
-                int pos;
-                for (int i = 0; i < n; i++)
-                {
-                    if (get < x)
-                        get += a[i];
-                    else
-                    {
-                        pos = i - 2;
+            cout << (n - pos) + ( n * (k - 1)) << endl;
+        }
+
+        if (sum < x) {
+            ll num_time, pos, target;
+            
+            if (!(x % sum)) cout << (n * k) - ((x / sum) * n) << endl;
+            else {
+                num_time = x / sum;
+                target = num_time * sum;
+                for (int i = 0; i < n; i++) {
+                    target += a[i];
+                    if (target >= x) {
+                        pos = i;
                         break;
                     }
                 }
-                cout << total - (target * n) - pos << endl;
-            }
-        }
-        else
-            cout << 0 << endl;
-    }
-    else if (sum == x)
-    {
-        cout << k << endl;
-    }
-    else
-    {
-        int pos;
-        // cout << 's';
-        for (int i = 0; i < n; i++)
-        {
-            target += a[i];
-            if (target > x)
-            {
-                pos = i + 1;
-                break;
-            }
-        }
-        cout << total  << " " << pos << endl;
-        cout << total - (n - pos) << endl;
-    }
-}
+                ll total = n * k;
+                ll req = (num_time * n) + pos;
 
-int main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        solve();
+                cout << (total - req) + 1 << endl;
+            }
+        }
+
+        if (sum == x) {
+            cout << k << endl;
+        }
     }
     return 0;
 }
