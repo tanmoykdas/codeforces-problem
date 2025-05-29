@@ -9,32 +9,25 @@ int main() {
   while (t--) {
     int n;
     cin >> n;
-    vector<int> a(n);
-    if (n == 1|| n == 2) {
-      cout << 1 << endl;
-      continue;
+    vector<int> a;
+    a.push_back(INT_MIN);
+    for (int i = 0; i < n; i++) { 
+      int x;
+      cin >> x;
+      if (i == 0 || x != a.back()) { 
+        a.push_back(x);
+      }
     }
-    for (auto& x : a) cin >> x;
-    set<int> st;
-    for (auto x : a) st.insert(x);
-    if (st.size() == 1) {
-        cout << 1 << endl;
-        continue;
-    }
+    a.push_back(INT_MIN); 
+
+    // for (auto x : a) cout << x << " ";
+    // cout << endl;
+
     int c = 0;
-    bool boro = false, choto = false;
-    for (int i = 0; i < n - 1; i++) {
-        if (a[i + 1] > a[i]) boro = true;
-        if (a[i + 1] < a[i]) choto = true;
-        if (choto) {
-            if (a[i + 1] > a[i]) {
-                c++;
-                choto = false;
-            }
-        }
+    for (int i = 1; i < a.size() - 1; i++) {
+      if (a[i] > a[i - 1] && a[i] > a[i + 1]) c++;
     }
-    if(a[n - 1] > a[n - 2]) c++;
-    cout << c << endl;
+    cout << c << endl; 
   }
   return 0;
 }
