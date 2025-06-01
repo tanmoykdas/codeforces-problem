@@ -1,35 +1,46 @@
 # Codeforces Problem Solutions
 
-Welcome to the **Codeforces Problem Solutions** repository! 👋
+Welcome to the **Codeforces Problem Solutions** repository.
 
-This repository contains my regularly updated solutions to problems from Codeforces. Here, you’ll find my journey through various contests, practice problems. Each solution is a step forward in sharpening my problem-solving and algorithmic skills.
+This repository contains my curated and regularly updated solutions to a variety of Codeforces problems, including both contest and practice problems. Each solution reflects my ongoing effort to enhance my algorithmic thinking and problem-solving abilities.
 
-## 📂 Repository Structure
+---
 
-- Each file typically corresponds to a particular contest.
-- Solutions are named according to the Codeforces problem codes or problem name.
-- Most solutions are in C++ (or other languages as specified in the file).
+## Repository Structure
 
-## 📝 How to Use
+- Solutions are organized by contest or problem code.
+- File names follow Codeforces conventions for easy navigation.
+- Most solutions are written in C++, with occasional use of other languages as noted.
 
-1. **Browse the repository:** Look for the problem code or contest you're interested in.
-2. **Check the solution:** Open the corresponding file to view the solution code.
-3. **Learn and Contribute:** Feel free to use these solutions for learning purposes. If you spot any mistakes or have a better approach, open an issue or pull request!
+---
 
-## 🚩 Why this repository?
+## Usage
 
-- To track my progress on Codeforces.
-- To help others looking for reference solutions.
-- To keep a backup of my submissions.
+1. **Browse the repository** to find the contest or problem code of interest.
+2. **Review the solution** by opening the relevant file.
+3. **Learn and contribute**: You are welcome to use these solutions for study or reference. If you notice any issues or wish to suggest improvements, feel free to open an issue or submit a pull request.
 
-## ⚠️ Note
+---
 
-- All solutions are written and uploaded by me.
-- Please use these solutions responsibly—avoid copying in live contests.
+## Purpose
 
-## 📫 Contact
+- Track and document my progress on Codeforces.
+- Provide reference solutions for the community.
+- Maintain a personal archive of problem-solving approaches and code submissions.
 
-- For feedback or collaboration, reach out via [GitHub Issues](https://github.com/tanmoykdas/Codeforces-problem/issues)
-- connect with me on Codeforces: [tanmoykdas](https://codeforces.com/profile/tanmoykdas)
+---
 
-Happy Coding! 🚀
+## Disclaimer
+
+- All solutions are authored and maintained by me.
+- Please use these solutions ethically; do not submit them as your own in ongoing contests.
+
+---
+
+## Contact
+
+- For feedback or collaboration, please use [GitHub Issues](https://github.com/tanmoykdas/Codeforces-problem/issues).
+- Connect with me on Codeforces: [tanmoykdas](https://codeforces.com/profile/tanmoykdas)
+
+---
+```
