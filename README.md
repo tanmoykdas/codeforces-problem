@@ -43,4 +43,3 @@ This repository contains my curated and regularly updated solutions to a variety
 - Connect with me on Codeforces: [tanmoykdas](https://codeforces.com/profile/tanmoykdas)
 
 ---
-```
