@@ -7,14 +7,14 @@ int main() {
   int t;
   cin >> t;
   while (t--) {
-    int n;
-    cin >> n;
-    vector<int> a(n);
+    int m;
+    cin >> m;
+    vector<int> a(m);
     for (auto &x : a) cin >> x;
     a.push_back(INT_MAX);
-    if (n < 3) cout << "-1\n";
+    if (m < 3) cout << "-1\n";
      else {
-        if (a[0] != a[n - 1]) cout << "0\n";
+        if (a[0] != a[m - 1]) cout << "0\n";
         else {
             int c = 0, mn = INT_MAX;
             for(int i = 0; i < a.size(); i++) {
@@ -24,7 +24,7 @@ int main() {
                     c = 0;
                 }
             }
-            if (mn == n) cout << -1 << "\n";
+            if (mn == m) cout << -1 << "\n";
             else
             cout << mn << "\n";
         }
