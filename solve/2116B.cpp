@@ -1,36 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
+long long x[100003], mod = 998244353;
 
-int main() {
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
+int main()
+{
+  x[0] = 1;
+  for (int i = 1; i <= 100000; i++) x[i] = (x[i - 1] + x[i - 1]) % mod;
   int t;
   cin >> t;
-  while (t--) {
+  while (t--)
+  {
     int n;
     cin >> n;
-    vector<int> a(n), b(n), c;
-    for (auto &x : a) cin >> x;
-    for (auto &x : b) cin >> x;
-    int mx = 0, mx_in = 0;
-    for (int i = 0; i < n; i++) {
-      if (a[i] > mx) {
-        mx = a[i];
-        mx_in = i;
-        c.push_back(a[i] + b[0]);
+    int a[n], b[n], c[n];
+    for (auto& x : a) cin >> x;
+    for (auto& x : b) cin >> x;
+    long long mx1 = 0, mx2 = 0, index1 = 0, index2 = 0;
+    for (int i = 0; i < n; i++)
+    {
+      if (a[i] > mx1)
+      {
+        mx1 = a[i];
+        index1 = i;
       }
-      else if (b[i] > mx) {
-        mx = b[i];
-        mx_in = i;
-        c.push_back(b[i] + a[0]);
-      } else if (a[i] == b[i]) {
-        c.push_back(max((a[i] + b[0]), (b[i] + a[0])));
-      } else {
-        c.push_back(max((a[mx_in] + b[i - mx]), (b[mx_in], a[i - mx_in])));
+      if (b[i] > mx2)
+      {
+        mx2 = b[i];
+        index2 = i;
+      }
+      if (mx1 > mx2) c[i] = (x[mx1] + x[b[i - index1]]) % mod;
+      else if (mx2 > mx1) c[i] = (x[mx2] + x[a[i - index2]]) % mod;
+      else {
+        if (a[i - index2] > b[i - index1]) c[i] = (x[mx1] + x[a[i - index2]]) % mod;
+        else c[i] = (x[mx2] + x[b[i - index1]]) % mod;
       }
     }
-
-    for (int i = 0; i < c.size(); i++) cout << c[i] << " ";
+    for (int i = 0; i < n; i++) cout << c[i] % mod << ' ';
+    cout << '\n';
   }
-  return 0;
 }
