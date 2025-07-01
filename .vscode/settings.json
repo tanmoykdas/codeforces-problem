@@ -61,6 +61,12 @@
     "cmath": "cpp",
     "*.tcc": "cpp",
     "random": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "barrier": "cpp",
+    "chrono": "cpp",
+    "latch": "cpp",
+    "limits": "cpp",
+    "semaphore": "cpp",
+    "valarray": "cpp"
   }
 }

@@ -19,10 +19,6 @@ int main() {
       }
     }
     a.push_back(INT_MIN); 
-
-    // for (auto x : a) cout << x << " ";
-    // cout << endl;
-
     int c = 0;
     for (int i = 1; i < a.size() - 1; i++) {
       if (a[i] > a[i - 1] && a[i] > a[i + 1]) c++;
