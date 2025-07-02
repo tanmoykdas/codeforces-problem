@@ -1,8 +1,6 @@
-# Ignore .cph folders (competitive programming helper)
+
 .cph/
 
-# Ignore .vscode folders (VS Code settings)
 .vscode/
 
-# Ignore all executable files
 *.exe
