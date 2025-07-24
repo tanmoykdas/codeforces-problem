@@ -18,6 +18,20 @@ int main() {
     int b = pow (y2 - y1, 2);
     dis = sqrt(a + b);
     cout << dis << endl;
+    long sum = 0;
+    for (auto x : v) sum += x;
+    cout << sum << endl;
+    if (dis == 0) {
+      int up = 0 + v[0];
+      int down = 0;
+      for (int i = 1; i < n; i++) {
+        if (down <= up) down += v[i];
+        else up += v[i];
+      }
+      cout << (up == down ? "Yes\n" : "No\n");
+    } else {
+      cout << (sum >= dis ? "Yes\n" : "No\n");
+    }
   }
   return 0;
 }
