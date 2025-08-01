@@ -9,38 +9,38 @@ int main() {
   while (t--) {
     int n;
     cin >> n;
-    vector<int> a(n);
+    int a[n];
     for (auto& x : a) cin >> x;
-    if (n < 2) {
-        cout << -1 << endl;
-        continue;
-    }
-    int c = 0;
-    for (auto x : a) {
-        if (x == 1) c++;
-    }
-    int parbo = n / 2;
-    if (c < parbo) {
-        for (int i = 0; i < n - parbo; i++) {
-            cout << 0 << " ";
-        }
-        for (int i = 0; i < parbo; i++) {
-            cout << 1 << " ";
-        }
-       
+    if (n == 1) cout << -1 << endl;
+    else if (n == 2) {
+        if (a[1] == 1) cout << 0 << " " << 0 << endl;
+        else cout << 0 << " " << 1 << endl;
     } else {
-        bool flag = true;
+        int b[n];
         for (int i = 0; i < n; i++) {
-            if (flag) {
-                if (a[i] == 1) {
-                    cout << 0 << " ";
-                    flag = false;
-                } 
-                else cout << 0 << " ";
-                
-            } else cout << a[i] << " ";
+            if ((i + 1) % 2 == 0) b[i] = 1;
+            else b[i] = 0;
         }
-        cout << '\n';
+        bool flag = false;
+        for (int i = 0; i < n; i++) {
+            if (a[i] != b[i]) flag = true;
+        }
+        if (flag) {
+            for (auto x : b) cout << x << " ";
+            cout << endl;
+        } else {
+            if (n % 2 == 0) {
+                b[1] = 0;
+                b[n - 2] = 1;
+                for (auto x : b) cout << x << " ";
+                cout << endl;
+            } else {
+                b[1] = 0;
+                b[n - 1] = 1;
+                for (auto x : b) cout << x << " ";
+                cout << endl;
+            }
+        }
     }
   }
   return 0;

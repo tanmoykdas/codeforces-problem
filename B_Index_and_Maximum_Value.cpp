@@ -17,8 +17,14 @@ int main() {
     char ao;
     int in, en;
     for (int i = 0; i < m; i++) {
-        cin >> ao >> in >> en;
+      cin >> ao >> in >> en;
+      if (in <= mx && mx <= en) {
+        if (ao == '+') mx += 1;
+        else mx -= 1;
+        cout << mx << " ";
+      } else cout << mx << " ";
     }
+    cout << '\n';
   }
   return 0;
 }
