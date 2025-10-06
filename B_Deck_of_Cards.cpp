@@ -18,9 +18,10 @@ void solve(){
     }
     for (int i = 0; i < c0; i++) cout << '-';
     int remain  =  n - (c1 + c0);
-    if ((c2 * 2) >= remain) {
-        if (remain == 1) cout << '-';
-        else for (int i = 0; i < remain; i++) cout << '?';
+    if (c2 == remain) {
+        for (int i = 0; i < remain; i++) cout << '-';
+    } else if ((c2 * 2) >= remain) {
+        for (int i = 0; i < remain; i++) cout << '?';
     } else {
         for (int i = 0; i < c2; i++) cout << '?';
         int extra = n - (c0 + c1 + (c2 * 2));
