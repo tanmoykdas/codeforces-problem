@@ -6,15 +6,20 @@ void solve(){
     string s;
     cin >> s;
     int ca = 0, cb = 0;
-    for (auto x : s) {
-        if (x == 'a') ca++;
+    for(auto c : s){
+        if(c == 'a') ca++;
         else cb++;
     }
-    if (ca == cb || ca == 0 || cb == 0) {
-        cout << -1 << "\n";
-        return;
+    int c = 0;
+    for(int i = 0; i < n - 1; i++) {
+        if (s[i] != s[i + 1]) {
+            c++;
+            i++;
+        }
     }
-    cout << (max(ca, cb) - 1) - (min(ca, cb)) << "\n";
+    cout << c << endl;
+    cout << n - (c * 2) << endl;
+
 }
 int main(){
     ios::sync_with_stdio(false);
