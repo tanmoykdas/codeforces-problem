@@ -11,7 +11,7 @@ void solve(){
         else if(x > a) boro++;
     }
     // cout << choto << " " << boro << "\n";
-    if (choto > boro) cout << a - 1 << "\n";
+    if (choto > boro) cout << a - 1 + 1 << "\n";
     else if (boro > choto) cout << a + 1 << "\n";
     else cout << a + 1 << "\n";
 }
