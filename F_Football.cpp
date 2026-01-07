@@ -19,7 +19,7 @@ int main() {
     } else fi.push_back(0);
   }
 //   for (auto x : fi) cout << x << " ";
-  cout << endl;
+  // cout << endl;
   vector<int> sc;
   c = b;
   for (int i = 0; i < n; i++) {
@@ -39,7 +39,10 @@ int main() {
   }
   
 //   for (auto x : sc) cout << x << " ";
-
+  if (fi[n - 1] >= 1 && fi[n - 1] == sc[n - 1]) {
+    fi[n - 1] -= 1;
+    fi[0] += 1;
+  }
   c = 0;
 
   for (int i = 0; i < n; i++) {
