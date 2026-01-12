@@ -9,50 +9,26 @@ int main() {
   while (t--) {
     int n, m, k;
     cin >> n >> m >> k;
-    int left = 0, right = 0;
-    left = k - 1;
-    right = n - k;
-    if (left > right) {
-        int c = -1;
-        int jacchi = 0;
-        for (int i = k - 1; i >= 0; i--) {
-            c++;
-            jacchi++;
-            cout << jacchi << " " << c << endl;
-            if ((jacchi + c) == m) break;
-        }
-        // --jacchi;
-        // --c;
-        int cost = jacchi + c;
-        // cout << cost << " " << m << endl;
-        if (cost == m) cout << cost << endl;
-        else if (m > cost) {
-            int jaite_parbo = cost + (m - cost) - 1;
-            // cout << jaite_parbo << endl;
-            if (jaite_parbo >= n) cout << n << endl;
-            else cout << jaite_parbo << endl;
-        } else cout << cost + 1 << endl;
-    } else {
-        int c = -1;
-        int jacchi = 0;
-        for (int i = k + 1; i < n; i++) {
-            c++;
-            jacchi++;
-            if ((jacchi + c) == m) break;
-            // cout << jacchi << " " << c << endl;
-        }
-        --jacchi;
-        --c;
-        int cost = jacchi + c;
-        // cout << cost << " " << m << endl;
-        if (cost == m) cout << cost << endl;
-        else {
-            int jaite_parbo = cost + (m - cost) - 1;
-            // cout << jaite_parbo << endl;
-            if (jaite_parbo >= n) cout << n << endl;
-            else cout << jaite_parbo << endl;
+    int left, right;
+    left = k - 1; right = n - k;
+    if (right > left) swap(left, right);
+    int din = 0, jete_parbo = 0;
+    for (int i = 0; i < left; i++) {
+        if (i == 0 && (din + 1 <= m)) {
+            jete_parbo++;
+            din += 1;
+        } else if (i > 0 && (din + 2 <= m)) {
+            jete_parbo++;
+            din += 2;
+        } else {
+            break;
         }
     }
+    int din_baki = (m - din);
+    if (din_baki && k != 1 && k != n) jete_parbo += din_baki; // base samne ba pichone thakle din baki thakleo lav nei
+    jete_parbo++; // karon base hisab korie ni
+    if (jete_parbo >= n) cout << n << endl;
+    else cout << jete_parbo << endl;
   }
   return 0;
 }
