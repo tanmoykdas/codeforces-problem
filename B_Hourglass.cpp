@@ -1,22 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   int t;
   cin >> t;
   while (t--) {
-    int s, k, m;
+    long long s, k, m;
     cin >> s >> k >> m;
-    int bar = m / k;
-    int bad = m % k;
-    if (k > m) cout << max(s - m, 0) << endl;
-    else if (k == m) {
-      cout << min (s, k) << endl;
+    
+    if (k >= s) {
+      long long rem = m % k;
+      if (rem == 0) {
+        cout << s << endl;
+      } else {
+        cout << max(0LL, s - rem) << endl;
+      }
     } else {
-      // cout << bar << " " << bad << endl;
-      if (bar % 2) {
+      long long bar = m / k;
+      long long bad = m % k;
+      if (bar % 2 == 1) {
         cout << k - bad << endl;
       } else {
         cout << s - bad << endl;
