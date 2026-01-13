@@ -9,16 +9,19 @@ int main() {
   while (t--) {
     int s, k, m;
     cin >> s >> k >> m;
-    int temp = 0;
-    int remain = s;
-    int c = k;
-    while (k <= m) {
-        remain -= c;
-        k += c;
-        if (remain == 0) remain = s;
-        cout << remain << " ";
+    int bar = m / k;
+    int bad = m % k;
+    if (k > m) cout << max(s - m, 0) << endl;
+    else if (k == m) {
+      cout << min (s, k) << endl;
+    } else {
+      // cout << bar << " " << bad << endl;
+      if (bar % 2) {
+        cout << k - bad << endl;
+      } else {
+        cout << s - bad << endl;
+      }
     }
-    cout << endl;
   }
   return 0;
 }
