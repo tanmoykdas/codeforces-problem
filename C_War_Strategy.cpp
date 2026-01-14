@@ -9,26 +9,23 @@ int main() {
   while (t--) {
     int n, m, k;
     cin >> n >> m >> k;
-    int left, right;
-    left = k - 1; right = n - k;
-    if (right > left) swap(left, right);
-    int din = 0, jete_parbo = 0;
-    for (int i = 0; i < left; i++) {
-        if (i == 0 && (din + 1 <= m)) {
-            jete_parbo++;
-            din += 1;
-        } else if (i > 0 && (din + 2 <= m)) {
-            jete_parbo++;
-            din += 2;
-        } else {
-            break;
-        }
+    int left = k - 1, right = n - k;
+    int l = 0, r = 0;
+    while (1) {
+      int c = 0;
+      if (l < left && l + r + max(l + 1, r) <= m) {
+        l++;
+        c++;
+      }
+      if (r < right && l + r + max(l, r + 1) <= m) {
+        r++;
+        c++;
+      }
+      if (c == 0) {
+        break;
+      }
     }
-    int din_baki = (m - din);
-    if (din_baki && k != 1 && k != n) jete_parbo += din_baki; // base samne ba pichone thakle din baki thakleo lav nei
-    jete_parbo++; // karon base hisab korie ni
-    if (jete_parbo >= n) cout << n << endl;
-    else cout << jete_parbo << endl;
+    cout << l + r + 1 << endl;
   }
   return 0;
 }
