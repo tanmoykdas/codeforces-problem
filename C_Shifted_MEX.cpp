@@ -12,7 +12,23 @@ int main() {
     int a[n];
     for (auto& x : a) cin >> x;
     sort(a, a + n);
-    for (auto x : a) cout << x + 6 << " ";
+    vector<int> v;
+    v.push_back(a[0]);
+    for (int i = 1; i < n; i++) {
+        if (v.back() != a[i]) {
+            v.push_back(a[i]);
+        }
+    } 
+    int c = 0, mx = 0;
+    for (int i = 1; i < v.size(); i++) {
+        if (v[i] - v[i - 1] == 1) {
+            c++;
+            mx = max(mx, c);
+        } else {
+            c = 0;
+        }
+    }
+    cout << mx + 1 << endl;
   }
   return 0;
 }
