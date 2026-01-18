@@ -9,44 +9,22 @@ int main() {
   while (t--) {
     int n, m, h;
     cin >> n >> m >> h;
-    int a[n];
-    for (int i = 0; i < n; i++) cin >> a[i];
-    vector<int> v;
-    
-    for (int i = 0; i < n; i++) v.push_back(a[i]);
-    
-    vector<int> in;
-    int last_crash = -1;
-    
-    for (int i = 0; i < m; i++) {
+    vector<int> a(n), v(n);
+    for (auto& x : a) cin >> x;
+    for (int i = 0; i < n; i++) v[i] = a[i];
+    set<int> st;
+    while(m--) {
         int j, val;
         cin >> j >> val;
-        j--;
-        long long temp = (long long)v[j] + val;
-        if (temp <= h) {
-            v[j] = temp;
-            in.push_back(j);
-        } else {
-            in.clear();
-            last_crash = i;
+        v[j - 1] += val;
+        st.insert(j - 1);
+        if (v[j - 1] > h) {
+            for (auto x : st) v[x] = a[x];
+            st.clear();
         }
     }
-    
-    
-        sort(in.begin(), in.end());
-        in.erase(unique(in.begin(), in.end()), in.end());
-
-        // for (auto x : in) cout << x << " ";
-        // cout << "\n";
-        
-        int c = 0;
-        for (int i = 0; i < n; i++) {
-            if (c < in.size() && i == in[c]) {
-                cout << v[i] << " ";
-                c++;
-            } else cout << a[i] << " ";
-        }
-        cout << "\n";
+    for (auto x : v) cout << x << " ";
+    cout << endl;
   }
   return 0;
 }
