@@ -23,25 +23,34 @@ int main() {
         j--;
         in.push_back(j);
         vl.push_back(val);
-        flag = true;
-        if (v[j] + val > h) {
-            flag = false;
-            in.clear();
-            vl.clear();
-        }
     }
-    
-    
-    if (flag) {
-        for (int i = 0; i < in.size(); i++) {
+    int c = 0;
+    // for (int i = 0; i < m; i++) {
+    //     cout << in[i] << " " << vl[i] << endl;
+    // }
+    for (int i = m - 1; i >= 0; i--) {
+        if (a[in[i]] + vl[i] > h){
+            ++c;
+            if (i == 0 && c == m) {
+                if (vl[i] > h) flag = true;
+                else flag = false;
+            }
+            break;
+        } else {
             a[in[i]] += vl[i];
+            ++c;
         }
-        for (auto x : a) cout << x << " ";
-        cout << endl;
-    } else {
-        for (auto x : a) cout << x << " ";
-        cout << endl;
     }
+
+    if (!flag) {
+        // cout << flag << endl;
+        for (auto x : v) cout << x << " ";
+        cout << endl;
+        continue;
+    }
+    for (auto x : a) cout << x << " ";
+    cout << endl;
   }
+
   return 0;
 }
