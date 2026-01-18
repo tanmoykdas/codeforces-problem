@@ -9,48 +9,44 @@ int main() {
   while (t--) {
     int n, m, h;
     cin >> n >> m >> h;
-    vector<int> a(n), v(n), in, vl;
-    bool flag = true;
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-        v[i] = a[i];
-    }
+    int a[n];
+    for (int i = 0; i < n; i++) cin >> a[i];
+    vector<int> v;
+    
+    for (int i = 0; i < n; i++) v.push_back(a[i]);
+    
+    vector<int> in;
+    int last_crash = -1;
     
     for (int i = 0; i < m; i++) {
-        int j;
-        int val;
+        int j, val;
         cin >> j >> val;
         j--;
-        in.push_back(j);
-        vl.push_back(val);
-    }
-    int c = 0;
-    // for (int i = 0; i < m; i++) {
-    //     cout << in[i] << " " << vl[i] << endl;
-    // }
-    for (int i = m - 1; i >= 0; i--) {
-        if (a[in[i]] + vl[i] > h){
-            ++c;
-            if (i == 0 && c == m) {
-                if (vl[i] > h) flag = true;
-                else flag = false;
-            }
-            break;
+        long long temp = (long long)v[j] + val;
+        if (temp <= h) {
+            v[j] = temp;
+            in.push_back(j);
         } else {
-            a[in[i]] += vl[i];
-            ++c;
+            in.clear();
+            last_crash = i;
         }
     }
+    
+    
+        sort(in.begin(), in.end());
+        in.erase(unique(in.begin(), in.end()), in.end());
 
-    if (!flag) {
-        // cout << flag << endl;
-        for (auto x : v) cout << x << " ";
-        cout << endl;
-        continue;
-    }
-    for (auto x : a) cout << x << " ";
-    cout << endl;
+        // for (auto x : in) cout << x << " ";
+        // cout << "\n";
+        
+        int c = 0;
+        for (int i = 0; i < n; i++) {
+            if (c < in.size() && i == in[c]) {
+                cout << v[i] << " ";
+                c++;
+            } else cout << a[i] << " ";
+        }
+        cout << "\n";
   }
-
   return 0;
 }
