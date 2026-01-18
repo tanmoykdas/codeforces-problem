@@ -28,7 +28,7 @@ int main() {
       if (a[i] == mex2.back()) mex2.push_back(mex2.back() + 1);
         else mex2.push_back(mex2.back());
     }
-    for (auto x : mex1) cout << x << " ";
+    for (auto x : mex2) cout << x << " ";
     cout << endl;
   }
   return 0;
