@@ -9,27 +9,32 @@ int main() {
   while (t--) {
     int n;
     cin >> n;
-    int a[n];
+    vector<int> a(n);
     for (auto& x : a) cin >> x;
-    vector<int> mex1, mex2;
-    if (a[0] == 0) mex1.push_back(1);
-    else mex1.push_back(0);
-    for (int i = 1; i < n - 1; i++) {
-      // cout << a[i] << " " << mex1.back() << endl;
-        if (a[i] == mex1.back()) mex1.push_back(mex1.back() + 1);
-        else mex1.push_back(mex1.back());
-    }
-    for (auto x : mex1) cout << x << " ";
-    cout << endl;
 
-    if (a[n - 1] == 0) mex2.push_back(1);
-    else mex2.push_back(0);
-    for (int i = n - 2; i > 0; i--) {
-      if (a[i] == mex2.back()) mex2.push_back(mex2.back() + 1);
-        else mex2.push_back(mex2.back());
+    if (n == 2) {
+      if (min(a[0], a[1]) == 0 && max(a[0], a[1]) != 0) cout << "YES\n";
+      else cout << "NO\n";
+      continue;
     }
-    for (auto x : mex2) cout << x << " ";
-    cout << endl;
+
+    sort(a.begin(), a.end());
+    int mex1, mex2;
+    if(a[0] == 0) mex1 = 1;
+    else mex1 = 0;
+    for (int i = 1; i < n - 1; i++) {
+      if (a[i + 1] - a[i] > 1) {
+        mex2 = a[i];
+        break;
+      }
+      if (i == n - 2 && a[i + 1] - a[i] <= 1) mex2 = a[i + 1];
+    }
+
+    if (a[1] != 0) mex2 = 0;
+    else ++mex2;
+    
+    if (mex1 == mex2) cout << "NO\n";
+    else cout << "YES\n";
   }
   return 0;
 }
