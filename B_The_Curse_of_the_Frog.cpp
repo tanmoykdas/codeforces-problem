@@ -34,5 +34,4 @@ int main() {
     if (c == n) cout << -1 << endl;
     else cout << ans << endl;
   }
-  return 0;
 }
