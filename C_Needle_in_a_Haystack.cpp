@@ -22,15 +22,25 @@ int main() {
         }
     }
     if (flag) {
-        for (int i = 0; i < s.size(); i++) {
-            mpp[s[i]] -= mp[s[i]];
+        // for (auto it = mpp.begin(); it != mpp.end(); it++) {
+        //     cout << it->first << " " << it->second << endl;
+        // }
+        for (auto it = mp.begin(); it != mp.end(); it++) {
+            mpp[it->first] -= it->second;
         } 
-        cout << ss;
+        // cout << ss << endl;
+        // for (auto it = mpp.begin(); it != mpp.end(); it++) {
+        //     cout << it->first << " " << it->second << endl;
+        // }
         for (auto it = mpp.begin(); it != mpp.end(); it++) {
-            cout << it->first << " " << it->second << endl;
+            if (it->second > 0) {
+                auto temp = lower_bound(s.begin(), s.end(), it->first);
+                for (int i = 0; i < it->second; i++) {
+                    s.insert(temp, it->first);
+                }
+            } 
         }
-        int i = 0;
-        cout << "parlam nah" << endl;
+        cout << s << endl;
     } else cout << "Impossible" << endl;
   }
   return 0;
