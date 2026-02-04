@@ -19,25 +19,27 @@ int main() {
     else {
         set<char> st;
         for (auto x : s) st.insert(x);
-        if (s[0] == '0' && s[1] == '0') s[0] = '1';
-        if (s[n - 1] == '0' && s[n - 2] == '0') s[n - 1] = '1';
-        for (int i = 1; i < n - 1; i++) {
-            if (s[i - 1] == '0' && s[i + 1] == '0') {
-                s[i] = '1';
-            }
-        }
+        int czero = 0;
+        int ans = 1, j = 0;
 
+        for (int i = 3; i < n; i++) {
+            if (s[i] == '0') czero++;
+            else {
+                ans += (czero / 3);
+                czero = 0;
+            }
+
+        }
+        ans += (czero / 3);
         int cnt = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 3; i < n; i++) {
             if (s[i] == '1') cnt++;
         }
-        for (auto x : s) cout << x;
-        cout << endl;
-        sort(s.begin(), s.end());
-        if (st.size() == 1)
-            cout << n / 2 << endl;
-        else
-            cout << cnt << endl;
+        if (cnt == 0){
+            if (n <= 6) cout << 2 << endl;
+            else cout << (n / 3) << endl;
+        }
+        else cout << ans + cnt << endl;
     }
   }
   return 0;
