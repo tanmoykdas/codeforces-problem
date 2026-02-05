@@ -12,35 +12,30 @@ int main() {
     string s;
     cin >> s;
     if (n < 3) cout << 1 << endl;
-    else if (n == 3) {
-        if (s == "100" || s == "001" || s == "101") cout << 2 << endl;
-        else cout << 1 << endl;
-    }
     else {
-        set<char> st;
-        for (auto x : s) st.insert(x);
-        int czero = 0;
-        int ans = 1, j = 0;
+        if (s[0] == '0' && s[1] == '0' && s[2] == '0') s[1] = '1';
+        if (s[0] == '0' && s[1] == '0' && s[2] == '1') s[0] = '1';
 
-        for (int i = 3; i < n; i++) {
+        if (s[n - 1] == '0' && s[n - 2] == '0' && s[n - 3] == '0') s[n - 2] = '1';
+        if (s[n - 1] == '0' && s[n - 2] == '0' && s[n - 3] == '1') s[n - 1] = '1';
+
+        int czero = 0, ans = 0;
+        for (int i = 0; i < n; i++) {
             if (s[i] == '0') czero++;
             else {
                 ans += (czero / 3);
                 czero = 0;
             }
-
         }
-        ans += (czero / 3);
+
         int cnt = 0;
-        for (int i = 3; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             if (s[i] == '1') cnt++;
         }
-        if (cnt == 0){
-            if (n <= 6) cout << 2 << endl;
-            else cout << (n / 3) << endl;
-        }
-        else cout << ans + cnt << endl;
+
+        cout << ans + cnt << endl;
     }
   }
+
   return 0;
 }
