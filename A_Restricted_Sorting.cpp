@@ -9,26 +9,22 @@ int main() {
   while (t--) {
     int n;
     cin >> n;
-    int a[n];
+    vector<int> a(n);
     for (auto& x : a) cin >> x;
-    vector<int> b(a, a + n);
+    vector<int> b = a;
     sort(b.begin(), b.end());
-    bool sort = true;
+    if (is_sorted(a.begin(), a.end())) {
+      cout << "-1\n";
+      continue;
+    }
+
+    int ans = INT_MAX;
     for (int i = 0; i < n; i++) {
-        if (a[i] != b[i]) {
-            sort = false;
-            break;
-        } 
+      if (a[i] != b[i]) {
+        ans = min(ans, max(a[i] - b[0], b[n - 1] - a[i]));
+      }
     }
-    int mx = 0;
-    for (int i = n - 1; i >= 0; i--) {
-        int temp = abs(b[i] - a[i]);
-        mx = max(mx, temp);
-        // cout << b[i] << " " << a[i] << endl;
-    }
-    // cout << endl;
-    if (sort) cout << -1 << endl;
-    else cout << mx << endl;
+    cout << ans << "\n";
   }
   return 0;
-} 
+}
