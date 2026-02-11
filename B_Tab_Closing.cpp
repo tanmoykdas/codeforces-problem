@@ -7,12 +7,11 @@ int main() {
   int t;
   cin >> t;
   while (t--) {
-    string s;
-    cin >> s;
-    int a,b;
-    a = s[0] - '0';
-    b = s[1] -  '0';
-    cout << a + b << endl;
+    int a, b, n;
+    cin >> a >> b >> n;
+    int m = a / b;
+    if (m >= n || b >= a) cout << 1 << endl;
+    else cout << 2 << endl;
   }
   return 0;
 }
