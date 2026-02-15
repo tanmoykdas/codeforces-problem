@@ -9,39 +9,18 @@ int main() {
   while (t--) {
     int n;
     cin >> n;
-    vector<int> a(n);
+    int a[n];
     for (auto& x : a) cin >> x;
-
-    set<int> s(a.begin(), a.end());
-    if (s.size() != n) {
-        cout << "NO\n";
-        continue;
-    } else {
-        vector<int> b(a);
-        sort(b.begin(), b.end());
-        if (b[n - 1] != n) {
-            cout << "NO\n";
-            continue;
+    for (int i = 0; i < n; i++) {
+        int index = i + 1;
+        while (index % 2 == 0) {
+            if (a[index - 1] < a[index / 2 - 1]) swap(a[index - 1], a[index / 2 - 1]);
+            index /= 2;
         }
     }
-
-    if (is_sorted(a.begin(), a.end())) {
-        cout << "YES\n";
-        continue;
-    }
-
-    for (int i = 0; i < n / 2; i++) {
-        int id1 = i + 1;
-        int id2 = id1 * 2;
-        --id1; --id2;
-        if (a[id1] > a[id2]) swap(a[id1], a[id2]);
-    }
-
-    if (is_sorted(a.begin(), a.end())) {
-        cout << "YES\n";
-    } else {
-        cout << "NO\n";
-    }
+    // for (int i = 0; i < n; i++) cout << a[i] << " ";
+    if (is_sorted(a, a + n)) cout << "YES" << endl;
+    else cout << "NO" << endl;
   }
   return 0;
 }
