@@ -11,20 +11,11 @@ int main() {
     cin >> n;
     int a[n];
     for (auto& x : a) cin >> x;
-    int c = 0;
     for (int i = 0; i < n - 1; i++) {
-        if (a[i] == 1 && a[i + 1] == 6) c++;
-        if (a[i] == 6 && a[i + 1] == 1) c++;
-
-        if (a[i] == 2 && a[i + 1] == 5) c++;
-        if (a[i] == 5 && a[i + 1] == 2) c++;
-
-        if (a[i] == 3 && a[i + 1] == 4) c++;
-        if (a[i] == 4 && a[i + 1] == 3) c++;
-
-        if (a[i] == a[i + 1]) c++;
+        if (a[i] + a[i + 1] == 7) a[i + 1] = 0;
+        else if (a[i] == a[i + 1]) a[i + 1] = 0;
     }
-    cout << c << endl;
+    cout << count(a, a + n, 0) << endl;
   }
   return 0;
 }
