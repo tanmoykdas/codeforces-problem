@@ -9,31 +9,24 @@ int main() {
   while (t--) {
     int n;
     cin >> n;
-    int a[n], b[n];
+    vector<int> a(n), b(n);
     for (auto& x : a) cin >> x;
     for (auto& x : b) cin >> x;
-    bool ok = true;
+    vector<int> c;
+    c.push_back(b[0]);
+    for (int i = 1; i < n; i++) {
+        if (c.back() != b[i]) c.push_back(b[i]);
+    }
+    int cnt = 0;
+    int d = 0;
     for (int i = 0; i < n; i++) {
-        if (a[i] != b[i]) {
-            if (i == 0) {
-                if (b[i] != b[i + 1]) {
-                    ok = false;
-                    break;
-                }
-            } else if (i == n - 1) {
-                if (b[i] != b[i - 1]) {
-                    ok = false;
-                    break;
-                }
-            } else {
-                if (b[i] != b[i - 1] && b[i] != b[i + 1]) {
-                    ok = false;
-                    break;
-                }
-            }
+        if (d < c.size() && c[d] == a[i]) {
+            cnt++;
+            d++;
         }
     }
-    cout << (ok ? "YES" : "NO") << "\n";
+    if (cnt == c.size()) cout << "YES\n";
+    else cout << "NO\n";
   }
   return 0;
 }
