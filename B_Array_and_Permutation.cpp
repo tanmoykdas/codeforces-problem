@@ -9,31 +9,27 @@ int main() {
   while (t--) {
     int n;
     cin >> n;
-    vector<int> a(n), b(n);
+    int a[n], b[n];
     for (auto& x : a) cin >> x;
     for (auto& x : b) cin >> x;
     bool ok = true;
-    for (int i = n - 1; i >= 0; i--) {
-        if (i == n - 1) {
-            if (b[i] == a[i] || b[i] == a[i - 1] || b[i] == b[i - 1]) {
-                continue;
+    for (int i = 0; i < n; i++) {
+        if (a[i] != b[i]) {
+            if (i == 0) {
+                if (b[i] != b[i + 1]) {
+                    ok = false;
+                    break;
+                }
+            } else if (i == n - 1) {
+                if (b[i] != b[i - 1]) {
+                    ok = false;
+                    break;
+                }
             } else {
-                ok = false;
-                break;
-            }
-        } else if (i == 0) {
-            if (b[i] == a[i] || b[i] == a[i + 1] || b[i] == b[i + 1]) {
-                continue;
-            } else {
-                ok = false;
-                break;
-            }
-        } else {
-            if (b[i] == a[i] || b[i] == a[i + 1] || b[i] == a[i - 1] || b[i] == b[i + 1]) {
-                continue;
-            } else {
-                ok = false;
-                break;
+                if (b[i] != b[i - 1] && b[i] != b[i + 1]) {
+                    ok = false;
+                    break;
+                }
             }
         }
     }
