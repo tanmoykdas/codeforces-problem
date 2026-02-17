@@ -11,13 +11,14 @@ int main() {
     cin >> n;
     vector<int> a(n);
     for (auto& x : a) cin >> x;
-    if (n == 2) cout << 1 << " " << 2 << endl;
-    else if (n == 3) cout << 1 << " " << 2 << " " << 3 << endl;
-    else {
-        for (int i = 4; i <= n; i++) cout << i << " ";
-        cout << 1 << " " << 2 << " " << 3 << " ";
-        cout << endl;
+    map<int, int> mp;
+    for (int i = 0; i < n; i++) {
+        mp[i + 1] = n - i;
     }
+    for (int i = 0; i < n; i++) {
+        cout << mp[a[i]] << " ";
+    }
+    cout << "\n";
   }
   return 0;
 }
