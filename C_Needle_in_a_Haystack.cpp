@@ -22,25 +22,17 @@ int main() {
         }
     }
     if (flag) {
-        // for (auto it = mpp.begin(); it != mpp.end(); it++) {
-        //     cout << it->first << " " << it->second << endl;
-        // }
-        for (auto it = mp.begin(); it != mp.end(); it++) {
-            mpp[it->first] -= it->second;
-        } 
-        // cout << ss << endl;
-        // for (auto it = mpp.begin(); it != mpp.end(); it++) {
-        //     cout << it->first << " " << it->second << endl;
-        // }
-        for (auto it = mpp.begin(); it != mpp.end(); it++) {
-            if (it->second > 0) {
-                auto temp = lower_bound(s.begin(), s.end(), it->first);
-                for (int i = 0; i < it->second; i++) {
-                    s.insert(temp, it->first);
+        int index = 0;
+        for (auto it : mpp) {
+            if (it.first < s[0] && it.second > mp[it.first]) {
+                for (int i = 0; i < it.second - mp[it.first]; i++) {
+                    cout << it.first;
+                    mpp[it.first]--;
                 }
-            } 
+            } else {
+                while (s[index++] < )
+            }
         }
-        cout << s << endl;
     } else cout << "Impossible" << endl;
   }
   return 0;
