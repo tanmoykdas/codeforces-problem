@@ -7,33 +7,59 @@ int main() {
   int t;
   cin >> t;
   while (t--) {
-    string s; cin >> s;
-    string t; cin >> t;
-    map<char, int> mp_s, mp_t;
-    for (auto x : s) {
-        mp_s[x]++;
+    string s, ss;
+    cin >> s; cin >> ss;
+    map<char, int> m, mp;
+    int in = 0, ind = 0;
+    for (auto x : s) m[x]++; for (auto x : ss) mp[x]++;
+    for (int i = 97; i <= 122; i++) {
+      char c = (char) i;
+      if (mp[c] < m[c]) {
+        cout << "Impossible\n";
+        goto end;
+      }
     }
-    for (auto x : t) {
-        mp_t[x]++;
-    }
-    bool ok = true;
-    for (int i = 0; i < s.size(); i++) {
-        if (mp_s[s[i]] > mp_t[s[i]]) {
-            ok = false;
-            break;
+    for (int i = 97; i <= 122; i++) {
+        string x = "";
+        string y = "";
+        bool f = false;
+        bool loop = false;
+        bool fuck = false;
+        char c = (char) i;
+        while (mp[c] > m[c]) {
+            x.push_back(c);
+            mp[c]--;
         }
-    }
-    if (ok) {
-        int index = 0;
-        sort(t.begin(), t.end());
-        for (int i = 0; i < t.size(); i++) {
-            if (it->first < s[index] && it->second > mp_s[it->first]) {
-                cout << it->first;
-                mp_t[it->first]--;
-                cout << it->second << " " << mp_s[it->first] << "\n";
-            } 
+        for (int j = in; j < s.size(); j++) {
+            if (s[j] <= c) {
+                ind = j;
+                fuck = true;
+            }
+            else break;
         }
-    } else cout << "Impossible\n";
+        if (fuck) {
+            for (int j = in; j <= ind; j++) {
+                y.push_back(s[j]);
+                if (s[j] < c) f = true;
+                loop = true;
+            }
+            fuck = false;
+        }
+                
+        if (loop) {
+            in = ind + 1;
+            loop = false;
+        }
+
+        string k = "";
+        if (f) k = y + x;
+        else k = x + y;
+        cout << k;
+        x = "";
+        y = "";
+        k = "";
+    }
+    cout << "\n";
+    end:;
   }
-  return 0;
 }
