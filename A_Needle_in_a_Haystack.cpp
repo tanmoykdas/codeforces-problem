@@ -40,6 +40,8 @@ int main() {
         if (fuck) {
             for (int j = in; j <= ind; j++) {
                 y.push_back(s[j]);
+                m[s[j]]--;
+                mp[s[j]]--;
                 if (s[j] < c) f = true;
                 loop = true;
             }

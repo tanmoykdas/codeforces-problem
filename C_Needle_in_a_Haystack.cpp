@@ -9,7 +9,6 @@ int main() {
   while (t--) {
     string s, ss;
     cin >> s >> ss;
-    // sort(s.begin(), s.end());
     sort(ss.begin(), ss.end());
     map<char, int> mp, mpp;
     for (auto x : s) mp[x]++;
@@ -22,17 +21,18 @@ int main() {
         }
     }
     if (flag) {
-        int index = 0;
-        for (auto it : mpp) {
-            if (it.first < s[0] && it.second > mp[it.first]) {
-                for (int i = 0; i < it.second - mp[it.first]; i++) {
-                    cout << it.first;
-                    mpp[it.first]--;
+        for (auto it = mp.begin(); it != mp.end(); it++) {
+            mpp[it->first] -= it->second;
+        } 
+        for (auto it = mpp.begin(); it != mpp.end(); it++) {
+            if (it->second > 0) {
+                auto temp = lower_bound(s.begin(), s.end(), it->first);
+                for (int i = 0; i < it->second; i++) {
+                    s.insert(temp, it->first);
                 }
-            } else {
-                while (s[index++] < )
-            }
+            } 
         }
+        cout << s << endl;
     } else cout << "Impossible" << endl;
   }
   return 0;
