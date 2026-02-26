@@ -7,17 +7,17 @@ int main() {
   int t;
   cin >> t;
   while (t--) {
-    int n, h, k;
+    long long n, h, k;
     cin >> n >> h >> k;
     vector<int> a(n);
     for (auto& x : a) cin >> x;
-    int mx = *max_element(a.begin(), a.end());
-    int index = 0;
+    long long mx = *max_element(a.begin(), a.end());
+    long long index = 0;
     for (int i = 0; i < n; i++) {
         if (a[i] == mx) index = i;
     }
-    int mn = INT_MAX;
-    int swp = 0;
+    long long mn = INT_MAX;
+    long long swp = 0;
     for (int i = 0; i < index; i++) {
         if (a[i] < mn) {
             mn = a[i];
@@ -26,8 +26,8 @@ int main() {
     }
     swap(a[swp], a[index]);
     bool f = true;
-    int sum = 0;
-    int ans = 0;
+    long long sum = 0;
+    long long ans = 0;
     for (int i = 0; i < n; i++) {
         sum += a[i];
         if (sum >= h) {
@@ -38,13 +38,13 @@ int main() {
     }
     if (f) {
         if (h % sum == 0) {
-            int cycle = h / sum;
+            long long cycle = h / sum;
             ans = (cycle * n) + ((cycle - 1) * k);
             cout << ans << endl; 
         } else {
-            int need = h / sum;
+            long long need = h / sum;
             sum *= need;
-            int in = 0;
+            long long in = 0;
             for (int i = 0; i < n; i++) {
                 sum += a[i];
                 if (sum >= h) {
@@ -52,7 +52,7 @@ int main() {
                     break;
                 }
             }
-            int time = ((need * n) + in) + (need * k);
+            long long time = ((need * n) + in) + (need * k);
             cout << time << endl;
         }
     } else cout << ans << endl;
