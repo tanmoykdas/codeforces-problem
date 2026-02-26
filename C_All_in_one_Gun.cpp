@@ -12,19 +12,6 @@ int main() {
     vector<int> a(n);
     for (auto& x : a) cin >> x;
     long long mx = *max_element(a.begin(), a.end());
-    long long index = 0;
-    for (int i = 0; i < n; i++) {
-        if (a[i] == mx) index = i;
-    }
-    long long mn = INT_MAX;
-    long long swp = 0;
-    for (int i = 0; i < index; i++) {
-        if (a[i] < mn) {
-            mn = a[i];
-            swp = i;
-        }
-    }
-    swap(a[swp], a[index]);
     bool f = true;
     long long sum = 0;
     long long ans = 0;
@@ -55,7 +42,12 @@ int main() {
             long long time = ((need * n) + in) + (need * k);
             cout << time << endl;
         }
-    } else cout << ans << endl;
+    } else {
+        long long mn = INT_MAX;
+        for (int i = 0; i <= ans; i++) {
+            if ()
+        }
+    }
   }
   return 0;
 }
