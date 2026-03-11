@@ -1,18 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
-int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        string s;
-        cin >> s;
-        long long n;
-        n = stoll(s);
-        cout << n;
-        int c = s.size() - 1;
-        for (int i = 0; i < s.size() - 1; i++) {
-            s[c] = '0'
 
-        }
+using ll = long long;
+
+void solve() {
+  ll n, p = 1;
+  cin >> n;
+  vector<ll> v;
+  while (p < n) {
+    p *= 10;
+    if (n % (p + 1) == 0) {
+        v.push_back(n / (p + 1));
     }
+  }
+  if (v.size()) {
+    cout << v.size() << endl;
+    sort(v.begin(), v.end());
+    for (auto x : v) cout << x << " ";
+    cout << endl;
+  } else cout << 0 << endl;
+}
+
+int main() {
+ios::sync_with_stdio(false);
+cin.tie(nullptr);
+
+  ll tt;
+  cin >> tt;
+  while(tt--) solve();
+  return 0;
 }
