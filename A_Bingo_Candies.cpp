@@ -6,34 +6,20 @@ using ll = long long;
 void solve() {
   ll n;
   cin >> n;
-  int a[n][n];
-  for (int i = 0; i < n; i++) 
-    for (int j = 0; j < n; j++) cin >> a[i][j];
-  
+  ll a[n][n];
   map<ll, ll> mp;
-  for (int i = 0; i < n; i++) 
-    for (int j = 0; j < n; j++) mp[a[i][j]]++;
-  if (n == 1) {
-    cout << "NO\n";
-    return;
-  }
-  vector<ll> v;
-  for (auto x : mp) v.push_back(x.second);
-  ll sum = 0;
-  sort(v.begin(), v.end());
-  if (v.size() >= n) {
-    for (int i = 0; i < v.size(); i++) {
-        if (v[i] >= (n - 1)) {
-            cout << "NO\n";
-            return;
-        }
-        cout << "YES\n";
+  ll mx = 0;
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      cin >> a[i][j];
+      mp[a[i][j]]++;
+      mx = max(mx, mp[a[i][j]]);
     }
-  } else {
-    ll sum = 0;
-    for (int i = 0; i < v.size() - 1; i++) sum += v[i];
-    cout << (sum >= n ? "YES\n" : "NO\n");
   }
+
+  ll total = n * n;
+  ll remain = total - mx;
+  cout << (remain >= n ? "YES\n" : "NO\n");
 }
 
 int main() {
