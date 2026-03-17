@@ -4,14 +4,16 @@ using namespace std;
 using ll = long long;
 
 void solve() {
-  ll n;
-  cin >> n;
+  ll n; cin >> n;
   vector<ll> a(n);
   for (auto& x : a) cin >> x;
-  ll mx = 0;
-  for (int i = 1; i < n; i += 2) mx = max(a[i], mx);
-  for (int i = 1; i < n; i += 2) a[i] = mx;
-  for (auto x : a) cout << x << " ";
+
+  vector<ll> v;
+  v.push_back(a[0]);
+  for (int i = 1; i < n; i++) {
+    if (a[i] >= v.back()) v.push_back(a[i]);
+  }
+  cout << v.size() << endl;
 }
 
 int main() {
