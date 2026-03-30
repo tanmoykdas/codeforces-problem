@@ -8,7 +8,7 @@ void solve() {
   vector <ll> a(n); for (auto& x : a) cin >> x;
 
   if (n < 3) {
-    for (auto x : a) cout << x << " ";
+    for (int i = 0; i < n; i++) cout << n << " ";
     cout << endl;
   } else {
     for (auto x : a) cout << 2 << " ";
