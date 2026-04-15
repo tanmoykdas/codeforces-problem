@@ -6,18 +6,24 @@ using ll = long long;
 void solve() {
   ll n, m; cin >> n >> m;
   vector <ll> a(n); for (auto& x : a) cin >> x;
-  ll c = 1;
-  vector <ll> b(n);
-  bool ans = true;
+  
+  ll c = (m - a[0]);
+
   for (int i = 0; i < n; i++) {
-    ll pos = (a[i] + c) % m;
-    b[i] = pos;
+    a[i] = (a[i] + c) % m;
   }
-//   for (auto x : b) cout << x << " ";
-  for (int i = 0; i + 1 < n; i++) {
-    if ((b[i] == b[i + 1]) && b[i] == 0) ans = false;
+  for (auto x : a) cout << x << " ";
+  cout << endl;
+  for (int i = 0; i < n; i++) {
+    a[i] = (a[i] + i + 1) % (m + 1);
   }
-  cout << (ans ? "YES\n" : "NO\n");
+  for (auto x : a) cout << x << " ";
+  cout << endl;
+  bool f = true;
+  for (auto x : a) {
+    if (x == 0) f = false;
+  }
+  cout << (f ? "YES\n" : "NO\n");
 }
 
 int main() {
