@@ -14,7 +14,7 @@ void solve() {
     else c = 1;
     mx = max(mx, c);
   }
-  cout << (mx <= m ? "YES\n" : "NO\n");
+  cout << (mx < m ? "YES\n" : "NO\n");
 }
 
 int main() {
