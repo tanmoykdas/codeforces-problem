@@ -31,7 +31,6 @@ void solve() {
         }
     }
   }
-//   for (auto xx : st) cout << xx << " ";
   cout << (st.size() == n ? "YES\n" : "NO\n");
 }
 
